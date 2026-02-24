@@ -4,11 +4,8 @@ import java.util.UUID;
 
 import es.um.atica.umufly.vuelos.domain.model.ReservaVuelo;
 
-public class FormalizacionReservaPort {
+public interface FormalizacionReservaPort {
 
-	public UUID formalizarReservaVuelo( ReservaVuelo reservaVuelo ) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	UUID formalizarReservaVuelo( ReservaVuelo reservaVuelo );
 
 }

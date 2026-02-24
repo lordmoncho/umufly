@@ -1,5 +1,7 @@
 package es.um.atica.umufly.vuelos.adaptors.persistence.jpa;
 
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -23,5 +25,15 @@ public class VuelosPersistenceAdapter implements VuelosRepository {
 		return jpaVueloRepository.findAll( PageRequest.of( pagina, tamanioPagina ) ).map( JpaPersistenceMapper::vueloToModel );
 	}
 
+	@Override
+	public Vuelo findVuelo( UUID id ) {
+		return jpaVueloRepository.findById( id.toString() ).map( JpaPersistenceMapper::vueloToModel ).orElseThrow( () -> new IllegalStateException( "Vuelo no encontrado" ) );
+	}
+
+	@Override
+	public int getPlazasDisponiblesAvion( UUID idVuelo ) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
