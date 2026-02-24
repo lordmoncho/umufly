@@ -1,4 +1,4 @@
-package es.um.atica.umufly.vuelos.adaptors.api.rest.dto;
+package es.um.atica.umufly.vuelos.adaptors.api.rest.v1.dto;
 
 import java.util.Objects;
 import java.util.UUID;

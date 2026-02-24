@@ -116,7 +116,7 @@ public class ReservaVuelo {
 		}
 		return of( UUID.randomUUID(), identificadorTitular, pasajero, vuelo, clase, fechaReserva, EstadoReserva.PENDIENTE );
 	}
-	
+
 	/**
 	 * Método para cancelar una reserva de vuelo. Las restricciones que se aplicaran para cancelar una reserva de vuelo son
 	 * las siguientes:
@@ -129,6 +129,10 @@ public class ReservaVuelo {
 	 */
 	public void cancelarReserva( LocalDateTime fechaHoraActual ) {
 		// TODO: Implementar operación
+	}
+
+	public void formalizarReserva() {
+		this.estado = EstadoReserva.ACTIVA;
 	}
 
 }
