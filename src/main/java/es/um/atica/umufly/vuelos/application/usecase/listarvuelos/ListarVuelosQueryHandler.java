@@ -10,25 +10,25 @@ import org.springframework.stereotype.Component;
 import es.um.atica.fundewebjs.umubus.domain.cqrs.QueryHandler;
 import es.um.atica.umufly.vuelos.application.dto.VueloAmpliadoDTO;
 import es.um.atica.umufly.vuelos.application.mapper.ApplicationMapper;
-import es.um.atica.umufly.vuelos.application.port.ReservasVueloRepository;
-import es.um.atica.umufly.vuelos.application.port.VuelosRepository;
+import es.um.atica.umufly.vuelos.application.port.ReservasVueloReadRepository;
+import es.um.atica.umufly.vuelos.application.port.VuelosReadRepository;
 import es.um.atica.umufly.vuelos.domain.model.Vuelo;
 
 @Component
 public class ListarVuelosQueryHandler implements QueryHandler<Page<VueloAmpliadoDTO>, ListarVuelosQuery> {
 
-	private final VuelosRepository vuelosRepository;
-	private final ReservasVueloRepository reservasVueloRepository;
+	private final VuelosReadRepository vuelosReadRepository;
+	private final ReservasVueloReadRepository reservasVueloReadRepository;
 
-	public ListarVuelosQueryHandler( VuelosRepository vuelosRepository, ReservasVueloRepository reservasVueloRepository ) {
-		this.vuelosRepository = vuelosRepository;
-		this.reservasVueloRepository = reservasVueloRepository;
+	public ListarVuelosQueryHandler( VuelosReadRepository vuelosRepository, ReservasVueloReadRepository reservasVueloReadRepository ) {
+		this.vuelosReadRepository = vuelosRepository;
+		this.reservasVueloReadRepository = reservasVueloReadRepository;
 	}
 
 	@Override
 	public Page<VueloAmpliadoDTO> handle( ListarVuelosQuery query ) throws Exception {
-		Page<Vuelo> vuelos = vuelosRepository.findVuelos( query.getPagina(), query.getTamanioPagina() );
-		Map<UUID, UUID> vuelosReserva = query.getDocumentoIdentidadPasajero() != null ? reservasVueloRepository.findReservasIdByVueloIdAndPasajero( query.getDocumentoIdentidadPasajero(), vuelos.map( Vuelo::getId ).getContent() ) : Collections.emptyMap();
+		Page<Vuelo> vuelos = vuelosReadRepository.findVuelos( query.getPagina(), query.getTamanioPagina() );
+		Map<UUID, UUID> vuelosReserva = query.getDocumentoIdentidadPasajero() != null ? reservasVueloReadRepository.findReservasIdByVueloIdAndPasajero( query.getDocumentoIdentidadPasajero(), vuelos.map( Vuelo::getId ).getContent() ) : Collections.emptyMap();
 
 		return vuelos.map( v -> ApplicationMapper.vueloToDTO( v, vuelosReserva.get( v.getId() ) ) );
 	}

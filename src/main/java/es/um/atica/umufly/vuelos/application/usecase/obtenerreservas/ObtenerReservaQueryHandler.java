@@ -3,21 +3,21 @@ package es.um.atica.umufly.vuelos.application.usecase.obtenerreservas;
 import org.springframework.stereotype.Component;
 
 import es.um.atica.fundewebjs.umubus.domain.cqrs.QueryHandler;
-import es.um.atica.umufly.vuelos.application.port.ReservasVueloRepository;
+import es.um.atica.umufly.vuelos.application.port.ReservasVueloReadRepository;
 import es.um.atica.umufly.vuelos.domain.model.ReservaVuelo;
 
 @Component
 public class ObtenerReservaQueryHandler implements QueryHandler<ReservaVuelo, ObtenerReservaQuery> {
 
-	private final ReservasVueloRepository reservasVueloRepository;
+	private final ReservasVueloReadRepository reservasVueloReadRepository;
 
-	public ObtenerReservaQueryHandler( ReservasVueloRepository reservasVueloRepository ) {
-		this.reservasVueloRepository = reservasVueloRepository;
+	public ObtenerReservaQueryHandler( ReservasVueloReadRepository reservasVueloReadRepository ) {
+		this.reservasVueloReadRepository = reservasVueloReadRepository;
 	}
 
 	@Override
 	public ReservaVuelo handle( ObtenerReservaQuery query ) throws Exception {
-		return reservasVueloRepository.findReservaById( query.getDocumentoIdentidadPasajero(), query.getIdReserva() );
+		return reservasVueloReadRepository.findReservaById( query.getDocumentoIdentidadPasajero(), query.getIdReserva() );
 
 	}
 

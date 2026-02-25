@@ -9,32 +9,32 @@ import org.springframework.stereotype.Component;
 
 import es.um.atica.umufly.vuelos.application.dto.VueloAmpliadoDTO;
 import es.um.atica.umufly.vuelos.application.mapper.ApplicationMapper;
-import es.um.atica.umufly.vuelos.application.port.ReservasVueloRepository;
-import es.um.atica.umufly.vuelos.application.port.VuelosRepository;
+import es.um.atica.umufly.vuelos.application.port.ReservasVueloReadRepository;
+import es.um.atica.umufly.vuelos.application.port.VuelosReadRepository;
 import es.um.atica.umufly.vuelos.domain.model.DocumentoIdentidad;
 import es.um.atica.umufly.vuelos.domain.model.Vuelo;
 
 @Component
 public class GestionarVuelosUseCase {
 
-	private final VuelosRepository vuelosRepository;
-	private final ReservasVueloRepository reservasVueloRepository;
+	private final VuelosReadRepository vuelosRepository;
+	private final ReservasVueloReadRepository reservasVueloReadRepository;
 
-	public GestionarVuelosUseCase( VuelosRepository vuelosRepository, ReservasVueloRepository reservasVueloRepository ) {
+	public GestionarVuelosUseCase( VuelosReadRepository vuelosRepository, ReservasVueloReadRepository reservasVueloReadRepository ) {
 		this.vuelosRepository = vuelosRepository;
-		this.reservasVueloRepository = reservasVueloRepository;
+		this.reservasVueloReadRepository = reservasVueloReadRepository;
 	}
 
-	public Page<VueloAmpliadoDTO> listarVuelos(DocumentoIdentidad documentoIdentidadPasajero, int pagina, int tamanioPagina ) {
+	public Page<VueloAmpliadoDTO> listarVuelos( DocumentoIdentidad documentoIdentidadPasajero, int pagina, int tamanioPagina ) {
 		Page<Vuelo> vuelos = vuelosRepository.findVuelos( pagina, tamanioPagina );
-		Map<UUID, UUID> vuelosReserva = documentoIdentidadPasajero != null ? reservasVueloRepository.findReservasIdByVueloIdAndPasajero( documentoIdentidadPasajero, vuelos.map( Vuelo::getId ).getContent() ) : Collections.emptyMap();
+		Map<UUID, UUID> vuelosReserva = documentoIdentidadPasajero != null ? reservasVueloReadRepository.findReservasIdByVueloIdAndPasajero( documentoIdentidadPasajero, vuelos.map( Vuelo::getId ).getContent() ) : Collections.emptyMap();
 
 		return vuelos.map( v -> ApplicationMapper.vueloToDTO( v, vuelosReserva.get( v.getId() ) ) );
 	}
 
 	public VueloAmpliadoDTO obtenerVuelo( DocumentoIdentidad documentoIdentidadPasajero, UUID idVuelo ) {
 		Vuelo vuelo = vuelosRepository.findVuelo( idVuelo );
-		UUID vueloReserva = documentoIdentidadPasajero != null ? reservasVueloRepository.findReservaIdByVueloIdAndPasajero( documentoIdentidadPasajero, vuelo.getId() ) : null;
+		UUID vueloReserva = documentoIdentidadPasajero != null ? reservasVueloReadRepository.findReservaIdByVueloIdAndPasajero( documentoIdentidadPasajero, vuelo.getId() ) : null;
 
 		return ApplicationMapper.vueloToDTO( vuelo, vueloReserva );
 	}
