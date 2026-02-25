@@ -26,14 +26,14 @@ public class VuelosPersistenceAdapter implements VuelosRepository {
 	}
 
 	@Override
-	public Vuelo findVuelo( UUID id ) {
-		return jpaVueloRepository.findById( id.toString() ).map( JpaPersistenceMapper::vueloToModel ).orElseThrow( () -> new IllegalStateException( "Vuelo no encontrado" ) );
+	public Vuelo findVuelo( UUID idVuelo ) {
+		return jpaVueloRepository.findById( idVuelo.toString() ).map( JpaPersistenceMapper::vueloToModel ).orElseThrow( () -> new IllegalStateException( "Vuelo no encontrado" ) );
 	}
 
 	@Override
-	public int getPlazasDisponiblesAvion( UUID idVuelo ) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int plazasDisponiblesEnVuelo( Vuelo vuelo ) {
+		int ocupadas = jpaVueloRepository.countPasajerosByIdVuelo( vuelo.getId().toString() );
+		return Math.max( vuelo.getAvion().capacidad() - ocupadas, 0 );
 	}
 
 }

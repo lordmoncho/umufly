@@ -1,31 +1,21 @@
 package es.um.atica.umufly.vuelos.application.dto;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 public class VueloAmpliadoDTO {
 
 	private UUID idVuelo;
-	private String tipoVuelo;
-	private LocalDateTime salidaVuelo;
-	private LocalDateTime llegadaVuelo;
-	private UUID idReserva;
+	private LocalDateTime fechaSalida;
+	private LocalDateTime fechaLlegada;
 	private String origen;
 	private String destino;
-	private String estado;
-	private Integer capacidad;
-
-	public VueloAmpliadoDTO( UUID idVuelo, String tipoVuelo, LocalDateTime salidaVuelo, LocalDateTime llegadaVuelo, UUID idReserva, String origen, String destino, String estado, Integer capacidad ) {
-		this.idVuelo = idVuelo;
-		this.tipoVuelo = tipoVuelo;
-		this.salidaVuelo = salidaVuelo;
-		this.llegadaVuelo = llegadaVuelo;
-		this.idReserva = idReserva;
-		this.origen = origen;
-		this.destino = destino;
-		this.estado = estado;
-		this.capacidad = capacidad;
-	}
+	private String tipoVuelo;
+	private String estadoVuelo;
+	private Integer capacidadAvion;
+	// Datos ampliados
+	private Optional<UUID> idReserva;
 
 	public UUID getIdVuelo() {
 		return idVuelo;
@@ -35,36 +25,20 @@ public class VueloAmpliadoDTO {
 		this.idVuelo = idVuelo;
 	}
 
-	public String getTipoVuelo() {
-		return tipoVuelo;
+	public LocalDateTime getFechaSalida() {
+		return fechaSalida;
 	}
 
-	public void setTipoVuelo( String tipoVuelo ) {
-		this.tipoVuelo = tipoVuelo;
+	public void setFechaSalida( LocalDateTime fechaSalida ) {
+		this.fechaSalida = fechaSalida;
 	}
 
-	public LocalDateTime getSalidaVuelo() {
-		return salidaVuelo;
+	public LocalDateTime getFechaLlegada() {
+		return fechaLlegada;
 	}
 
-	public void setSalidaVuelo( LocalDateTime salidaVuelo ) {
-		this.salidaVuelo = salidaVuelo;
-	}
-
-	public LocalDateTime getLlegadaVuelo() {
-		return llegadaVuelo;
-	}
-
-	public void setLlegadaVuelo( LocalDateTime llegadaVuelo ) {
-		this.llegadaVuelo = llegadaVuelo;
-	}
-
-	public UUID getIdReserva() {
-		return idReserva;
-	}
-
-	public void setIdReserva( UUID idReserva ) {
-		this.idReserva = idReserva;
+	public void setFechaLlegada( LocalDateTime fechaLlegada ) {
+		this.fechaLlegada = fechaLlegada;
 	}
 
 	public String getOrigen() {
@@ -83,20 +57,36 @@ public class VueloAmpliadoDTO {
 		this.destino = destino;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getTipoVuelo() {
+		return tipoVuelo;
 	}
 
-	public void setEstado( String estado ) {
-		this.estado = estado;
+	public void setTipoVuelo( String tipoVuelo ) {
+		this.tipoVuelo = tipoVuelo;
 	}
 
-	public Integer getCapacidad() {
-		return capacidad;
+	public String getEstadoVuelo() {
+		return estadoVuelo;
 	}
 
-	public void setCapacidad( Integer capacidad ) {
-		this.capacidad = capacidad;
+	public void setEstadoVuelo( String estadoVuelo ) {
+		this.estadoVuelo = estadoVuelo;
+	}
+
+	public Integer getCapacidadAvion() {
+		return capacidadAvion;
+	}
+
+	public void setCapacidadAvion( Integer capacidadAvion ) {
+		this.capacidadAvion = capacidadAvion;
+	}
+
+	public Optional<UUID> getIdReserva() {
+		return idReserva;
+	}
+
+	public void setIdReserva( Optional<UUID> idReserva ) {
+		this.idReserva = idReserva;
 	}
 
 }

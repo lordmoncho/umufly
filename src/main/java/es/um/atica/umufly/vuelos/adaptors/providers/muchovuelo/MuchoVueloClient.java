@@ -35,10 +35,10 @@ public class MuchoVueloClient {
 		}
 	}
 
-	public void cancelarReservaVuelo( TipoDocumentoDTO tipoDocumentoTitular, String numeroDocumento, UUID idReserva ) {
-		String headerUsuario = getHeaderUsuario( tipoDocumentoTitular, numeroDocumento );
+	public void cancelarReservaVuelo( TipoDocumentoDTO tipoDocumentoTitular, String numeroDocumentoTitular, UUID idReserva ) {
+		String headerUsuario = getHeaderUsuario( tipoDocumentoTitular, numeroDocumentoTitular );
 		try {
-			restClientMuchoVuelo.delete().uri( uriBuilder -> uriBuilder.path( URI_RESERVAS_VUELO_V1 + "/{idReserva}" ).build( idReserva ) ).header( API_HEADER_USUARIO, headerUsuario ).retrieve();
+			restClientMuchoVuelo.delete().uri( uriBuilder -> uriBuilder.path( URI_RESERVAS_VUELO_V1 + "/{idReserva}" ).build( idReserva.toString() ) ).header( API_HEADER_USUARIO, headerUsuario ).retrieve().toBodilessEntity();
 		} catch ( org.springframework.web.client.RestClientResponseException ex ) {
 			throw new MuchoVueloClientException( "MuchoVueloAPI - Error " + ex.getStatusText() + ": " + ex.getResponseBodyAsString(), ex );
 		}

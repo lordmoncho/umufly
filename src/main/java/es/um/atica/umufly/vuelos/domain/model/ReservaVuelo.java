@@ -118,6 +118,15 @@ public class ReservaVuelo {
 	}
 
 	/**
+	 * Método que formaliza una reserva de vuelo. Añadirá la fecha en la que se ha formalizado la reserva de vuelo y
+	 * cambiará el estado a ACTIVA.
+	 *
+	 */
+	public void formalizarReserva() {
+		estado = EstadoReserva.ACTIVA;
+	}
+
+	/**
 	 * Método para cancelar una reserva de vuelo. Las restricciones que se aplicaran para cancelar una reserva de vuelo son
 	 * las siguientes:
 	 * <ol>
@@ -125,14 +134,12 @@ public class ReservaVuelo {
 	 * <li>No se puede cancelar una reserva si el vuelo ha sido iniciado.</li>
 	 * </ol>
 	 *
-	 * @param fechaHoraActual
 	 */
-	public void cancelarReserva( LocalDateTime fechaHoraActual ) {
-		// TODO: Implementar operación
-	}
-
-	public void formalizarReserva() {
-		this.estado = EstadoReserva.ACTIVA;
+	public void cancelarReserva( LocalDateTime now ) {
+		if ( now.isAfter( vuelo.getItinerario().salida() ) ) {
+			throw new VueloIniciadoException( "El vuelo se encuentra iniciado no se puede cancelar la reserva" );
+		}
+		estado = EstadoReserva.CANCELADA;
 	}
 
 }

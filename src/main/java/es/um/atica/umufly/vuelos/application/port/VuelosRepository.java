@@ -8,10 +8,9 @@ import es.um.atica.umufly.vuelos.domain.model.Vuelo;
 
 public interface VuelosRepository {
 
-	Vuelo findVuelo( UUID id );
-
 	Page<Vuelo> findVuelos( int pagina, int tamanioPagina );
 
-	int getPlazasDisponiblesAvion( UUID idVuelo );
+	Vuelo findVuelo( UUID idVuelo );
 
+	int plazasDisponiblesEnVuelo( Vuelo vuelo );
 }
