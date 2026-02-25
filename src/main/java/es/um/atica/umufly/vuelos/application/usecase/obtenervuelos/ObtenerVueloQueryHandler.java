@@ -1,6 +1,5 @@
 package es.um.atica.umufly.vuelos.application.usecase.obtenervuelos;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ import es.um.atica.umufly.vuelos.application.port.VuelosRepository;
 import es.um.atica.umufly.vuelos.domain.model.Vuelo;
 
 @Component
-public class ObtenerVueloQueryHandler implements QueryHandler<Optional<VueloAmpliadoDTO>, ObtenerVueloQuery> {
+public class ObtenerVueloQueryHandler implements QueryHandler<VueloAmpliadoDTO, ObtenerVueloQuery> {
 
 	private final VuelosRepository vuelosRepository;
 	private final ReservasVueloRepository reservasVueloRepository;
@@ -24,11 +23,11 @@ public class ObtenerVueloQueryHandler implements QueryHandler<Optional<VueloAmpl
 	}
 
 	@Override
-	public Optional<VueloAmpliadoDTO> handle( ObtenerVueloQuery query ) throws Exception {
+	public VueloAmpliadoDTO handle( ObtenerVueloQuery query ) throws Exception {
 		Vuelo vuelo = vuelosRepository.findVuelo( query.getIdVuelo() );
 		UUID vueloReserva = query.getDocumentoIdentidadPasajero() != null ? reservasVueloRepository.findReservaIdByVueloIdAndPasajero( query.getDocumentoIdentidadPasajero(), vuelo.getId() ) : null;
 
-		return Optional.ofNullable( ApplicationMapper.vueloToDTO( vuelo, vueloReserva ) );
+		return ApplicationMapper.vueloToDTO( vuelo, vueloReserva );
 	}
 
 }

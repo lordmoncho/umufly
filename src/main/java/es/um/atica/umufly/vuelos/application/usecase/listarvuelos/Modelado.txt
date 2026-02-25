@@ -1,0 +1,16 @@
+ReservaParking
+Cliente
+Periodo
+TipoEstancia
+Importe
+Descuento
+--------------------------------------
+(agregado raiz) ReservaParking
+	- Periodo (ValueObject) (de cuando a cuando)
+	- idReserva
+	- idCliente
+	- importe (ValueObject)
+	- tipoEstacionamiento (enumerado [corta_duracion, larga_duracion]
+	- fechaReserva (timestamp)
+	- estado 
+	- descuento (valor calculado)
