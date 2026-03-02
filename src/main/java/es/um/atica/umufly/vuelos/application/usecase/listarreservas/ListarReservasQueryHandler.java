@@ -10,15 +10,15 @@ import es.um.atica.umufly.vuelos.domain.model.ReservaVuelo;
 @Component
 public class ListarReservasQueryHandler implements QueryHandler<Page<ReservaVuelo>, ListarReservasQuery> {
 
-	private final ReservasVueloReadRepository reservasVueloWriteRepository;
+	private final ReservasVueloReadRepository reservasVueloReadRepository;
 
 	public ListarReservasQueryHandler( ReservasVueloReadRepository reservasVueloRepository ) {
-		this.reservasVueloWriteRepository = reservasVueloRepository;
+		this.reservasVueloReadRepository = reservasVueloRepository;
 	}
 
 	@Override
 	public Page<ReservaVuelo> handle( ListarReservasQuery query ) throws Exception {
-		return reservasVueloWriteRepository.findReservas( query.getDocumentoIdentidadPasajero(), query.getPagina(), query.getTamanioPagina() );
+		return reservasVueloReadRepository.findReservas( query.getDocumentoIdentidadPasajero(), query.getPagina(), query.getTamanioPagina() );
 	}
 
 }
