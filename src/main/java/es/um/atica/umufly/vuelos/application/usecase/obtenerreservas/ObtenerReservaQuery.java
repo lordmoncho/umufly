@@ -8,24 +8,23 @@ import es.um.atica.umufly.vuelos.domain.model.ReservaVuelo;
 
 public class ObtenerReservaQuery extends Query<ReservaVuelo> {
 
-	private final DocumentoIdentidad documentoIdentidadPasajero;
+	private final DocumentoIdentidad documentoIdentidad;
 	private final UUID idReserva;
 
-	private ObtenerReservaQuery( DocumentoIdentidad documentoIdentidadPasajero, UUID idReserva ) {
-		this.documentoIdentidadPasajero = documentoIdentidadPasajero;
+	private ObtenerReservaQuery( DocumentoIdentidad documentoIdentidad, UUID idReserva ) {
+		this.documentoIdentidad = documentoIdentidad;
 		this.idReserva = idReserva;
 	}
 
-	public static ObtenerReservaQuery of( DocumentoIdentidad documentoIdentidadPasajero, UUID idVuelo ) {
-		return new ObtenerReservaQuery( documentoIdentidadPasajero, idVuelo );
+	public static ObtenerReservaQuery of( DocumentoIdentidad documentoIdentidad, UUID idReserva ) {
+		return new ObtenerReservaQuery( documentoIdentidad, idReserva );
 	}
 
-	public DocumentoIdentidad getDocumentoIdentidadPasajero() {
-		return documentoIdentidadPasajero;
+	public DocumentoIdentidad getDocumentoIdentidad() {
+		return documentoIdentidad;
 	}
 
 	public UUID getIdReserva() {
 		return idReserva;
 	}
-
 }

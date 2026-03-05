@@ -13,6 +13,7 @@ public interface ReservasVueloWriteRepository {
 	 */
 	void persistirReserva( ReservaVuelo reservaVuelo );
 
+
 	/**
 	 * M�todo que persiste la formalizaci�n de la reserva de vuelo.
 	 *

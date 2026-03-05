@@ -27,5 +27,4 @@ public class CancelarReservaCommand extends SyncCommand<ReservaVuelo> {
 	public UUID getIdReserva() {
 		return idReserva;
 	}
-
 }

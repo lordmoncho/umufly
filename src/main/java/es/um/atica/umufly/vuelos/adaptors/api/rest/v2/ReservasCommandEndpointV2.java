@@ -23,16 +23,17 @@ import jakarta.validation.Valid;
 @RestController
 public class ReservasCommandEndpointV2 {
 
-	private final ReservasModelAssemblerV2 reservasModelAssembler;
-	private final AuthService authService;
 	private final CrearReservaCommandHandler crearReservaCommandHandler;
 	private final CancelarReservaCommandHandler cancelarReservaCommandHandler;
+	private final ReservasModelAssemblerV2 reservasModelAssembler;
+	private final AuthService authService;
 
-	public ReservasCommandEndpointV2( ReservasModelAssemblerV2 reservasModelAssembler, AuthService authService, CrearReservaCommandHandler crearReservaCommandHandler, CancelarReservaCommandHandler cancelarReservaCommandHandler ) {
-		this.reservasModelAssembler = reservasModelAssembler;
-		this.authService = authService;
+	public ReservasCommandEndpointV2( CrearReservaCommandHandler crearReservaCommandHandler, CancelarReservaCommandHandler cancelarReservaCommandHandler, ReservasModelAssemblerV2 reservasModelAssembler,
+			AuthService authService ) {
 		this.crearReservaCommandHandler = crearReservaCommandHandler;
 		this.cancelarReservaCommandHandler = cancelarReservaCommandHandler;
+		this.reservasModelAssembler = reservasModelAssembler;
+		this.authService = authService;
 	}
 
 	@PostMapping( Constants.PRIVATE_PREFIX + Constants.API_VERSION_2 + Constants.RESOURCE_RESERVAS_VUELO )
@@ -45,5 +46,4 @@ public class ReservasCommandEndpointV2 {
 	public ReservaVueloDTO cancelarReserva( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
 		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
 	}
-
 }

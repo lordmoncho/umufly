@@ -41,5 +41,4 @@ public class CrearReservaCommand extends SyncCommand<ReservaVuelo> {
 	public Pasajero getPasajero() {
 		return pasajero;
 	}
-
 }
