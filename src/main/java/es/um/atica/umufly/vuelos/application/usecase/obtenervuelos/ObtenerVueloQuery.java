@@ -6,10 +6,11 @@ import es.um.atica.fundewebjs.umubus.domain.cqrs.Query;
 import es.um.atica.umufly.vuelos.application.dto.VueloAmpliadoDTO;
 import es.um.atica.umufly.vuelos.domain.model.DocumentoIdentidad;
 
+
 public class ObtenerVueloQuery extends Query<VueloAmpliadoDTO> {
 
-	private DocumentoIdentidad documentoIdentidadPasajero;
-	private UUID idVuelo;
+	private final DocumentoIdentidad documentoIdentidadPasajero;
+	private final UUID idVuelo;
 
 	private ObtenerVueloQuery( DocumentoIdentidad documentoIdentidadPasajero, UUID idVuelo ) {
 		this.documentoIdentidadPasajero = documentoIdentidadPasajero;
@@ -27,5 +28,4 @@ public class ObtenerVueloQuery extends Query<VueloAmpliadoDTO> {
 	public UUID getIdVuelo() {
 		return idVuelo;
 	}
-
 }
