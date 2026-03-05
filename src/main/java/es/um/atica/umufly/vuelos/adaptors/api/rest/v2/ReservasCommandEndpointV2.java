@@ -43,7 +43,83 @@ public class ReservasCommandEndpointV2 {
 	}
 
 	@DeleteMapping( Constants.PRIVATE_PREFIX + Constants.API_VERSION_2 + Constants.RESOURCE_RESERVAS_VUELO + Constants.ID_RESERVA )
-	public ReservaVueloDTO cancelarReserva( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+	public ReservaVueloDTO cancelarReserva2( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva3( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva4( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva5( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva6( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva7( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva8( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva9( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva10( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva11( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva12( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva13( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva14( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva15( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva16( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva17( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva18( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva19( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva20( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
+		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
+	}
+
+	public ReservaVueloDTO cancelarReserva21( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @PathVariable( "idReserva" ) UUID idReserva ) throws Exception {
 		return reservasModelAssembler.toModel( cancelarReservaCommandHandler.handle( CancelarReservaCommand.of( authService.parseUserHeader( usuario ), idReserva ) ) );
 	}
 }
