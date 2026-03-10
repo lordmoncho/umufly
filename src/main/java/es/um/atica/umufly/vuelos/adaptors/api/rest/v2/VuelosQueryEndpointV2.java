@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -19,8 +20,11 @@ import es.um.atica.umufly.vuelos.application.usecase.listarvuelos.ListaVuelosQue
 import es.um.atica.umufly.vuelos.application.usecase.obtenervuelos.ObtenerVueloQuery;
 import es.um.atica.umufly.vuelos.application.usecase.obtenervuelos.ObtenerVueloQueryHandler;
 import es.um.atica.umufly.vuelos.domain.model.DocumentoIdentidad;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@Tag( name = "VuelosV2", description = "Operaciones de consulta sobre vuelos" )
 public class VuelosQueryEndpointV2 {
 
 	private final ObtenerVueloQueryHandler obtenerVueloQueryHandler;
@@ -39,6 +43,9 @@ public class VuelosQueryEndpointV2 {
 	}
 
 	@GetMapping( Constants.PRIVATE_PREFIX + Constants.API_VERSION_2 + Constants.RESOURCE_VUELOS )
+	@ApiResponse( responseCode = "200", description = "OK" )
+	@ApiResponse( responseCode = "404", description = "No hay vuelos" )
+	@PreAuthorize( "hasRole('USER')" )
 	public CollectionModel<VueloDTO> getVuelos( @RequestHeader( name = "UMU-Usuario", required = true ) String usuario, @RequestParam( name = "page", defaultValue = "0" ) int page, @RequestParam( name = "size", defaultValue = "25" ) int size )
 			throws Exception {
 		DocumentoIdentidad documento = authService.parseUserHeader( usuario );
