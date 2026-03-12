@@ -56,4 +56,68 @@ public class EnvioEntity {
 		this.estado = estado;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId( String id ) {
+		this.id = id;
+	}
+
+	public ParticipanteEnvioEntity getRemitente() {
+		return remitente;
+	}
+
+	public void setRemitente( ParticipanteEnvioEntity remitente ) {
+		this.remitente = remitente;
+	}
+
+	public ParticipanteEnvioEntity getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario( ParticipanteEnvioEntity destinatario ) {
+		this.destinatario = destinatario;
+	}
+
+	public PaqueteEnvioEntity getPaquete() {
+		return paquete;
+	}
+
+	public void setPaquete( PaqueteEnvioEntity paquete ) {
+		this.paquete = paquete;
+	}
+
+	public String getIdVuelo() {
+		return idVuelo;
+	}
+
+	public void setIdVuelo( String idVuelo ) {
+		this.idVuelo = idVuelo;
+	}
+
+	public String getIdSeguimiento() {
+		return idSeguimiento;
+	}
+
+	public void setIdSeguimiento( String idSeguimiento ) {
+		this.idSeguimiento = idSeguimiento;
+	}
+
+	public BigDecimal getImporteEnvio() {
+		return importeEnvio;
+	}
+
+	public void setImporteEnvio( BigDecimal importeEnvio ) {
+		this.importeEnvio = importeEnvio;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado( String estado ) {
+		this.estado = estado;
+	}
+
 }
