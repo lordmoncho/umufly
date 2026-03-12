@@ -1,6 +1,10 @@
 package es.um.atica.umufly.envios.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import es.um.atica.umufly.vuelos.domain.model.EstadoVuelo;
+import es.um.atica.umufly.vuelos.domain.model.Vuelo;
 
 // Agregado raíz
 public class Envio {
@@ -53,8 +57,11 @@ public class Envio {
 
 	// --- Lógica de Negocio ---
 
-	public static Envio facturarPaquete( UUID vueloId, Persona remitente, Persona destinatario, Paquete paquete ) {
-		return of( UUID.randomUUID(), NumeroSeguimiento.generate(), vueloId, remitente, destinatario, paquete, EstadoEnvio.FACTURADO );
+	public static Envio facturarPaquete( Persona remitente, Persona destinatario, Paquete paquete, Vuelo vuelo ) {
+		if ( vuelo.isIniciado( LocalDateTime.now() ) || EstadoVuelo.CANCELADO.equals( vuelo.getEstado() ) || EstadoVuelo.COMPLETADO.equals( vuelo.getEstado() ) ) {
+			throw new IllegalArgumentException( "El vuelo no está en un estado que acepte envíos" );
+		}
+		return of( UUID.randomUUID(), NumeroSeguimiento.generate(), vuelo.getId(), remitente, destinatario, paquete, EstadoEnvio.FACTURADO );
 	}
 
 	public void entregarPaquete() {
