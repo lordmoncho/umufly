@@ -1,0 +1,17 @@
+Os cuento cómo funciona el tema de la carga. En MuchoVuelo ofrecemos a particulares y empresas la posibilidad de enviar 
+paquetes en la bodega de nuestros aviones. Cuando el remitente entre en la aplicación, debe ver un listado con todos los 
+vuelos disponibles. De cada vuelo queremos mostrar los mismos datos que mostramos para las reservas de vuelo.
+
+No vamos a valorar un límite de carga, ya que no esperamos que nuestros aviones se llenen nunca. Por su parte, el destinatario 
+retirará su paquete de las taquillas del aeropuerto, destinadas a tal fin, cuando éste haya llegado.
+
+El remitente elegirá un vuelo disponible, es decir que no esté cancelado o iniciado, e iniciará el proceso de facturación 
+del paquete. En ese momento necesitamos que nos proporcione sus datos: nombre, apellidos, documento de identidad, correo 
+electrónico y teléfono de contacto. También necesitamos los datos del destinatario que serán los mismos. Y, por supuesto, 
+los datos propios del paquete: descripción del contenido, peso en kilogramos y si es frágil o no.
+
+El precio se calcula automáticamente: dos euros con cincuenta céntimos por kilogramo si el paquete no es frágil, y cuatro 
+euros por kilogramo si lo es. Cuando se completa la facturación, habrá que asignarle un número de seguimiento único para 
+que el remitente pueda consultar el estado de su envío en cualquier momento. El paquete puede estar en uno de estos estados: 
+facturado, en tránsito o entregado. La aplicación debe permitir ver un listado con todos los envíos realizados por un remitente.
+

@@ -9,3 +9,4 @@ public record Avion( int capacidad ) {
 	}
 
 }
+
